@@ -50,20 +50,33 @@ function makeMenu(slices) {
 
         //Create the internal content of the element
         const slice_internal = document.createElement("div");
-        slice_internal.className="contents";
+        slice_internal.className="internal";
+
+        //add image
+        const slice_img = document.createElement("img");
+        slice_img.src = "icon.png";
+        slice_img.style.maxWidth=`15%`;
+
+        slice_internal.appendChild(slice_img);
 
         //add a span for text
-        const slice_span = document.createElement("span");
-        slice_span.appendChild(document.createTextNode(i));  
-        slice_internal.appendChild(slice_span);
+        const slice_content = document.createElement("div");
+        slice_content.className="contents"
+        slice_content.appendChild(document.createTextNode(`test ${i}`));  
+        slice_internal.appendChild(slice_content);
         
         //Skew/Rotate the list element
-        slice.style.transform = `rotate(${initial_angle + central_angle * i + spacer}deg) skew(${skew_angle}deg)`
+        const rotate = initial_angle + central_angle * i + spacer;
+        slice.style.transform = `rotate(${rotate}deg) skew(${skew_angle}deg)`;
 
         //skew/rotate the internal
-        var rotate_back = -(90 - (central_angle / 2) + spacer /2);
-        slice_internal.style.transform = `skew(${-skew_angle}deg) rotate(${rotate_back}deg) scale(1)`
-        
+        const rotate_back = -(90 - (central_angle / 2) + spacer);
+        slice_internal.style.transform = `skew(${-skew_angle}deg) rotate(${rotate_back}deg) scale(1)`;
+
+        console.log(rotate + rotate_back);
+        //slice_content.style.transform = `rotate(${-(rotate + rotate_back)}deg)`;
+        slice_img.style.transform = `rotate(${-(rotate + rotate_back)}deg)`;
+
         slice.appendChild(slice_internal);
         unordered_list.appendChild(slice);
     }

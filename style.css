@@ -41,7 +41,7 @@ body {
     pointer-events: none;
   }
   
-.list_wrapper li .contents {
+.list_wrapper li .internal {
     position: absolute;
 
     
@@ -65,9 +65,9 @@ body {
     pointer-events: auto;
 }
 
-.list_wrapper li .contents:hover,
-.list_wrapper li .contents:active,
-.list_wrapper li .contents:focus {
+.list_wrapper li .internal:hover,
+.list_wrapper li .internal:active,
+.list_wrapper li .internal:focus {
     animation: blink normal 1s infinite ease-in-out;
     color: #fff;
     background: rgba(10,17,35,0.8);
@@ -83,10 +83,31 @@ body {
     );
 }
 
-  
-.list_wrapper li .contents span {
+.list_wrapper li .internal img {
+    position: absolute;
+    top: 2.6em;
+    left: 10.6em;
+    font-size: .5em;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+/* This is for when the content is rotated to always be up-down oriented  */
+.list_wrapper li .internal .contents_alt {
     position: relative;
     top: 1.8em;
+    display: block;
+    font-size: .5em;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+  
+/* This is for when the content is oriented with the slice  */
+.list_wrapper li .internal .contents {
+    position: absolute;
+    width:50%;
+    top: 0.8em;
+    left: 6.3em;
     display: block;
     font-size: .5em;
     font-weight: 700;
